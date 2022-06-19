@@ -34,7 +34,15 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
     alert("Invalid Entry. Fuel level and cargo mass should be numbers.");
     event.preventDefault();
    }
+
+   let pilotStatus = document.getElementById("pilotStatus");
+   pilotStatus.innerHTML = `Pilot ${pilot} Ready`;
+   let copilotStatus = document.getElementById("copilotStatus");
+   copilotStatus.innerHTML = `Co-Pilot ${copilot} Ready`;
+   console.log(pilotStatus.innerHTML);
+   console.log(copilotStatus.innerHTML);
    
+
 }
 
 async function myFetch() {
