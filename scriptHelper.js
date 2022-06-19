@@ -19,14 +19,21 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
    if (testInput === ''){
     return "Empty";
-   } else if (typeof testInput === 'number'){
-    return "Is a Number";
-   } else {
+   } else if (isNaN(Number(testInput)) === true){
     return "Not a Number";
+   } else {
+    return "Number";
    }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
+    if (validateInput(pilot) === "Number" || validateInput(copilot) === "Number"){
+    alert("Invalid Entry. Pilot and Copilot names should be of type string");
+    event.preventDefault();
+   } else if (validateInput(fuelLevel)=== "Not a Number" || validateInput(cargoMass)=== "Not a Number"){
+    alert("Invalid Entry. Fuel level and cargo mass should be numbers.");
+    event.preventDefault();
+   }
    
 }
 
@@ -41,6 +48,14 @@ async function myFetch() {
 
 function pickPlanet(planets) {
 }
+
+/*module.exports = {
+    addDestinationInfo: addDestinationInfo,
+    validateInput: validateInput,
+    formSubmission: formSubmission,
+    pickPlanet: pickPlanet,
+    myFetch: myFetch
+}*/
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
