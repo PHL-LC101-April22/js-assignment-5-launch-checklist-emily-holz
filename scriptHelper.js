@@ -28,21 +28,45 @@ function validateInput(testInput) {
 
 function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
     if (validateInput(pilot) === "Number" || validateInput(copilot) === "Number"){
-    alert("Invalid Entry. Pilot and Copilot names should be of type string");
-    event.preventDefault();
+        alert("Invalid Entry. Pilot and Copilot names should be of type string");
+        event.preventDefault();
+        return;
    } else if (validateInput(fuelLevel)=== "Not a Number" || validateInput(cargoMass)=== "Not a Number"){
-    alert("Invalid Entry. Fuel level and cargo mass should be numbers.");
-    event.preventDefault();
-   }
-
+        alert("Invalid Entry. Fuel level and cargo mass should be numbers.");
+        event.preventDefault();
+        return;
+   } 
    let pilotStatus = document.getElementById("pilotStatus");
-   pilotStatus.innerHTML = `Pilot ${pilot} Ready`;
    let copilotStatus = document.getElementById("copilotStatus");
-   copilotStatus.innerHTML = `Co-Pilot ${copilot} Ready`;
-   console.log(pilotStatus.innerHTML);
-   console.log(copilotStatus.innerHTML);
-   
+   let faultyItems = document.getElementById("faultyItems");
+   let fuelStatus = document.getElementById("fuelStatus");
+   let launchStatus = document.getElementById("launchStatus");
+   let cargoStatus = document.getElementById("cargoStatus");
 
+   pilotStatus.innerHTML = `Pilot ${pilot} Ready`;
+   copilotStatus.innerHTML = `Co-Pilot ${copilot} Ready`;
+
+   //console.log(pilotStatus.innerHTML);
+   //console.log(copilotStatus.innerHTML);
+
+   if (Number(fuelLevel) < 10000 ){
+        faultyItems.style.visibility = "visible";
+        fuelStatus.innerHTML = `Fuel level is less than 10000 liters. There is not enough fuel for the journey.`;
+        launchStatus.innerHTML = "Shuttle not ready for launch."
+        launchStatus.style.color = "red";
+   };
+
+    if (Number(cargoMass) > 10000){
+        faultyItems.style.visibility = "visible";
+        cargoStatus.innerHTML = `Mass is greater than 10000 kg. Too much mass for shuttle to take off.`;
+        launchStatus.innerHTML = "Shuttle not ready for launch."
+        launchStatus.style.color = "red";
+    };
+
+    if (Number(fuelLevel) >= 10000 && Number(cargoMass) <= 10000){
+        launchStatus.innerHTML = "Shuttle is ready for launch."
+        launchStatus.style.color = "green";
+    }
 }
 
 async function myFetch() {
