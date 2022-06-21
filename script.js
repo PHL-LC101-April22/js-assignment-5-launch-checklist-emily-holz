@@ -1,7 +1,6 @@
 // Write your JavaScript code here!
 //import { formSubmission } from "./scriptHelper.js";
 
-
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
     let launchStatus = document.getElementById("launchStatus");
@@ -19,10 +18,10 @@ window.addEventListener("load", function() {
             formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass)
         };  
         
-        console.log(pilotName);
+        /*console.log(pilotName);
         console.log(copilotName);
         console.log(fuelLevel);
-        console.log(cargoMass);
+        console.log(cargoMass);*/
   
     });
 
@@ -40,6 +39,7 @@ window.addEventListener("load", function() {
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
        let chosenPlanet = pickPlanet(listedPlanets);
        console.log(chosenPlanet);
+       addDestinationInfo(document, chosenPlanet.name, chosenPlanet.diameter, chosenPlanet.star, chosenPlanet.distance, chosenPlanet.image, chosenPlanet.moons);
        
    })
 
