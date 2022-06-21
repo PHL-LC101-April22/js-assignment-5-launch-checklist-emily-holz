@@ -69,7 +69,9 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
     if (Number(fuelLevel) >= 10000 && Number(cargoMass) <= 10000){
         launchStatus.innerHTML = "Shuttle is ready for launch."
         launchStatus.style.color = "green";
-    }
+       event.preventDefault();
+    };
+    
 }
 
 async function myFetch() {

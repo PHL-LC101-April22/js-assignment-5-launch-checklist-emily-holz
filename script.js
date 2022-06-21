@@ -3,6 +3,8 @@
 
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
+    let launchStatus = document.getElementById("launchStatus");
+
     form.addEventListener("submit", function(event){
         pilotName = document.querySelector("input[name=pilotName]").value;
         copilotName = document.querySelector("input[name=copilotName]").value;
@@ -14,11 +16,16 @@ window.addEventListener("load", function() {
             event.preventDefault();
         } else { 
             formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass)
-        };   
+        };  
+        
+        console.log(pilotName);
+        console.log(copilotName);
+        console.log(fuelLevel);
+        console.log(cargoMass);
+  
     });
-    
-   
 
+    
     
 /*
    let listedPlanets;
@@ -33,3 +40,5 @@ window.addEventListener("load", function() {
    })*/
    
 });
+
+
