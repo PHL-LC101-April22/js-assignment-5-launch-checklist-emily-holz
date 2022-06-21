@@ -47,9 +47,6 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
    pilotStatus.innerHTML = `Pilot ${pilot} Ready`;
    copilotStatus.innerHTML = `Co-Pilot ${copilot} Ready`;
 
-   //console.log(pilotStatus.innerHTML);
-   //console.log(copilotStatus.innerHTML);
-
    if (Number(fuelLevel) < 10000 ){
         faultyItems.style.visibility = "visible";
         fuelStatus.innerHTML = `Fuel level is less than 10000 liters. There is not enough fuel for the journey.`;
@@ -77,22 +74,16 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
-        });
-
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+            return response.json();
+    });
+    
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
 }
 
-/*module.exports = {
-    addDestinationInfo: addDestinationInfo,
-    validateInput: validateInput,
-    formSubmission: formSubmission,
-    pickPlanet: pickPlanet,
-    myFetch: myFetch
-}*/
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
