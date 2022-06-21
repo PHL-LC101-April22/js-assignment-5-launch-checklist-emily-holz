@@ -36,6 +36,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
         event.preventDefault();
         return;
    } 
+
    let pilotStatus = document.getElementById("pilotStatus");
    let copilotStatus = document.getElementById("copilotStatus");
    let faultyItems = document.getElementById("faultyItems");
@@ -54,6 +55,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
         fuelStatus.innerHTML = `Fuel level is less than 10000 liters. There is not enough fuel for the journey.`;
         launchStatus.innerHTML = "Shuttle not ready for launch."
         launchStatus.style.color = "red";
+        event.preventDefault();
    };
 
     if (Number(cargoMass) > 10000){
@@ -61,6 +63,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
         cargoStatus.innerHTML = `Mass is greater than 10000 kg. Too much mass for shuttle to take off.`;
         launchStatus.innerHTML = "Shuttle not ready for launch."
         launchStatus.style.color = "red";
+        event.preventDefault();
     };
 
     if (Number(fuelLevel) >= 10000 && Number(cargoMass) <= 10000){

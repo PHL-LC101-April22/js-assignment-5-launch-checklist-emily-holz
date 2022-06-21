@@ -16,6 +16,8 @@ window.addEventListener("load", function() {
             formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass)
         };   
     });
+    
+   
 
     
 /*
